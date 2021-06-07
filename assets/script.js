@@ -8,7 +8,7 @@ const timesArr = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5P
 
 const input = $("#textEl");
 const save = $("#saveEl");
-
+//created a for loop to go through the different hours of the day and save data to local storage//
 for (let i=0; i < timesArr.length; i++) {
     let hour = timesArr[i];
 
@@ -33,3 +33,4 @@ if (currentTime === timeSlot[i]) {
 } else if (currentTime > timeSlot[i]) {
     input.css("background-color", "#77dd77");
 }
+//Code logic is incomplete will continue to work on functionality//
