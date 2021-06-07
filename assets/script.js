@@ -23,3 +23,10 @@ for (let i=0; i < timesArr.length; i++) {
         localStorage.setItem(hour, input.val());
     });
 };
+//Put an array into a variable to correspond to each hour interval and be used in an if statement to change colors based on time//
+let timeSlot = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+//Made a variable to hold the current time using moment.js//
+let currentTime = moment().hour();
+//Made a variable to define i value//
+let i = timeSlot.length;
+
