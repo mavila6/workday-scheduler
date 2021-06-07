@@ -12,12 +12,8 @@ const save = $("#saveEl");
 for (let i=0; i < timesArr.length; i++) {
     let hour = timesArr[i];
 
-    input.attr("id", hour);
-
     let savedText = localStorage.getItem(hour);
     input.val(savedText);
-
-    save.attr("date-time", hour);
 
     save.on("click", function() {
         localStorage.setItem(hour, input.val());
