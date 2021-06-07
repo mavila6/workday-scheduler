@@ -29,4 +29,11 @@ let timeSlot = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 let currentTime = moment().hour();
 //Made a variable to define i value//
 let i = timeSlot.length;
-
+//If statment to change color of rows depending on the time of day//
+if (currentTime === timeSlot[i]) {
+    input.css("background-color", "#ff6961");
+} else if (currentTime < timeSlot[i]) {
+    input.css("background-color", "#d3d3d3");
+} else if (currentTime > timeSlot[i]) {
+    input.css("background-color", "#77dd77");
+}
