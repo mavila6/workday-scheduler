@@ -22,12 +22,13 @@ if (currentTime === i) {
     $(`#${i}`).addClass('bg-secondary')
 }
 
+// created variable to get item value from local storage and display it in the saved time slot//
+let savedText = localStorage.getItem(i);
+console.log(savedText,i)
+$(`#${i}-txt`).val(savedText);
 
-    let savedText = localStorage.getItem(i);
-    console.log(savedText,i)
-    $(`#${i}-txt`).val(savedText);
-
-}
+};
+//Used jquery to add event listenr to saveBtn and save the user input for that specific time slot in local storage//
 $('.saveBtn').on('click', function(event){
     event.preventDefault();
     var time = $(this).parent().attr('id');
@@ -35,10 +36,3 @@ $('.saveBtn').on('click', function(event){
     console.log(time, user);
     localStorage.setItem(time, user);
 })
-//Put an array into a variable to correspond to each hour interval and be used in an if statement to change colors based on time//
-
-
-//Made a variable to define i value//
-
-
-//Code logic is incomplete will continue to work on functionality//
