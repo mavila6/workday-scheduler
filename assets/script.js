@@ -8,29 +8,31 @@ const timesArr = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5P
 
 const input = $("#textEl");
 const save = $("#saveEl");
-//created a for loop to go through the different hours of the day and save data to local storage//
-for (let i=0; i < timesArr.length; i++) {
-    let hour = timesArr[i];
-
-    let savedText = localStorage.getItem(hour);
-    input.val(savedText);
-
-    save.on("click", function() {
-        localStorage.setItem(hour, input.val());
-    });
-};
-//Put an array into a variable to correspond to each hour interval and be used in an if statement to change colors based on time//
-let timeSlot = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 //Made a variable to hold the current time using moment.js//
 let currentTime = moment().hour();
-//Made a variable to define i value//
-let i = timeSlot.length;
-//If statment to change color of rows depending on the time of day//
-if (currentTime === timeSlot[i]) {
-    input.css("background-color", "#ff6961");
-} else if (currentTime < timeSlot[i]) {
-    input.css("background-color", "#d3d3d3");
-} else if (currentTime > timeSlot[i]) {
-    input.css("background-color", "#77dd77");
+//created a for loop to go through the different hours of the day and save data to local storage//
+for (let i=9; i <= 17; i++) {
+    let hour = timesArr[i];
+    //If statment to change color of rows depending on the time of day//
+if (currentTime === i) {
+    $(`#${i}`).addClass('bg-danger')
+} else if (currentTime < i) {
+    $(`#${i}`).addClass('bg-success');
+} else if (currentTime > i) {
+    $(`#${i}`).addClass('bg-secondary')
 }
-//Code logic is incomplete will continue to work on functionality//
+
+// created variable to get item value from local storage and display it in the saved time slot//
+let savedText = localStorage.getItem(i);
+console.log(savedText,i)
+$(`#${i}-txt`).val(savedText);
+
+};
+//Used jquery to add event listenr to saveBtn and save the user input for that specific time slot in local storage//
+$('.saveBtn').on('click', function(event){
+    event.preventDefault();
+    var time = $(this).parent().attr('id');
+    var user = $(this).siblings('textarea').val();
+    console.log(time, user);
+    localStorage.setItem(time, user);
+})
